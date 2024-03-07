@@ -177,4 +177,44 @@
     color: #555; /* Changes the link color on hover */
 }
 
+/* Style for the close button (X) */
+.chat-close {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 15px; /* Adjust top and right as needed to position the X */
+    right: 15px;
+    background: none;
+    border: none;
+    color: black; /* Color of the 'X' */
+    font-size: 2em; /* Adjust the size of the 'X' */
+    cursor: pointer;
+    z-index: 50; /* Ensure it's above other elements */
+}
+
+
+/* Full-screen chatbot on mobile */
+@media (max-width: 768px) {
+    .chatbot-open {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 0;
+    }
+    
+    #chat-header {
+        position: relative;
+    }
+    
+    .chat-toggle-open {
+      display:none;
+    }
+
+    .chat-close {
+        display: block; /* Show only on mobile devices */
+    }
+}
+
 

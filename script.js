@@ -53,7 +53,7 @@ function sendMessage(message) {
     
 }
 
-
+/*
 function positionChatArea() {
     const button = document.getElementById('chat-toggle');
     const chatArea = document.getElementById('chatbot-container');
@@ -67,8 +67,41 @@ function positionChatArea() {
     chatArea.style.bottom = `calc(100vh - ${buttonTop- 20}px)`;
 }
 
+*/
+
+function positionChatArea() {
+    const chatArea = document.getElementById('chatbot-container');
+
+    // Check if on a mobile device based on viewport width
+    if (window.innerWidth <= 768) {
+        // For mobile devices, set the chat area to full screen
+        chatArea.style.width = '100%';
+        chatArea.style.height = '100vh';
+        chatArea.style.bottom = '0';
+        chatArea.style.right = '0';
+        chatArea.style.borderRadius = '0'; // Optional: remove border radius for full screen
+    } else {
+        const button = document.getElementById('chat-toggle');
+        // Calculate button position relative to the viewport
+        const buttonRect = button.getBoundingClientRect();
+        const buttonTop = buttonRect.top;
+        const buttonHeight = buttonRect.height;
+
+        // Set chat area position above the button with padding to prevent overlap
+        chatArea.style.bottom = `calc(100vh - ${buttonTop}px + ${buttonHeight}px + 20px)`;
+        // Reset styles that were potentially modified for mobile
+        chatArea.style.width = ''; // Reset width if it was set for mobile
+        chatArea.style.height = ''; // Reset height if it was set for mobile
+        chatArea.style.borderRadius = ''; // Reset border radius if it was removed for mobile
+    }
+}
+
+
+document.getElementById('chat-toggle-small').addEventListener('click', function(event) {
+    document.getElementById('chat-toggle').click();
+});
+
 document.getElementById('chat-toggle').addEventListener('click', function() {
-    console.log("Hi!")
     var container = document.getElementById('chatbot-container');
     var toggleBtn = document.getElementById('chat-toggle');
     
@@ -90,4 +123,4 @@ document.getElementById('chat-toggle').addEventListener('click', function() {
 
 
 
-// Add classes for user-message and bot-message in your CSS to differentiate between them
+
