@@ -16,12 +16,17 @@ document.getElementById('chat-input').addEventListener('keypress', function(even
     }
 });
 
+function scrollToBottom() {
+    const chatMessages = document.getElementById('chat-messages');
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 
 function sendMessage(message) {
     var messagesContainer = document.getElementById('chat-messages');
     
     // Add user's message to the chat
     messagesContainer.innerHTML += '<div class="user-message">' + message + '</div>';
+    scrollToBottom();
     
     // Here you would send the message to your backend
     // For example using fetch:
@@ -46,6 +51,7 @@ function sendMessage(message) {
        
        let formattedResponse = data.response.replace(/\[([^\]]+)\]\((http[^\)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
         messagesContainer.innerHTML += '<div class="bot-message">' + formattedResponse + '</div>';
+        scrollToBottom();
     })
     .catch((error) => {
         console.error('Error:', error);
