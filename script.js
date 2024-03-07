@@ -76,25 +76,29 @@ function positionChatArea() {
     if (window.innerWidth <= 768) {
         // For mobile devices, set the chat area to full screen
         chatArea.style.width = '100%';
-        chatArea.style.height = '100vh';
+
+        //Adjust height based on the available space
+        const viewportHeight = window.innerHeight;
+        chatArea.style.height = viewportHeight + 'px';
         chatArea.style.bottom = '0';
         chatArea.style.right = '0';
         chatArea.style.borderRadius = '0'; // Optional: remove border radius for full screen
     } else {
         const button = document.getElementById('chat-toggle');
+        const chatArea = document.getElementById('chatbot-container');
+
         // Calculate button position relative to the viewport
         const buttonRect = button.getBoundingClientRect();
         const buttonTop = buttonRect.top;
         const buttonHeight = buttonRect.height;
 
         // Set chat area position above the button with padding to prevent overlap
-        chatArea.style.bottom = `calc(100vh - ${buttonTop}px + ${buttonHeight}px + 20px)`;
-        // Reset styles that were potentially modified for mobile
-        chatArea.style.width = ''; // Reset width if it was set for mobile
-        chatArea.style.height = ''; // Reset height if it was set for mobile
-        chatArea.style.borderRadius = ''; // Reset border radius if it was removed for mobile
+        chatArea.style.bottom = `calc(100vh - ${buttonTop- 20}px)`;
     }
 }
+
+// Adjust the height when the page is resized (e.g., when changing orientation)
+window.addEventListener('resize', positionChatArea);
 
 
 document.getElementById('chat-toggle-small').addEventListener('click', function(event) {
