@@ -156,11 +156,12 @@
 
 
 .bot-message img {
-    height: 20px; /* Example size, adjust as needed */
+    height: 20px; /* Set the height of your GIF */
+    width: auto; /* Adjust the width automatically based on the aspect ratio */
+    object-fit: contain; /* This will ensure that the GIF is scaled properly, without stretching */
     display: block;
-    margin: 0 auto; /* Center the GIF */
+    margin: 0 auto; /* Center the GIF horizontally */
 }
-
 
 
 .powered-by {
