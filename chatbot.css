@@ -155,6 +155,14 @@
 }
 
 
+.bot-message img {
+    height: 20px; /* Example size, adjust as needed */
+    display: block;
+    margin: 0 auto; /* Center the GIF */
+}
+
+
+
 .powered-by {
     text-align: center;
     font-size: 12px;
